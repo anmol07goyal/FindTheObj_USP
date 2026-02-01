@@ -11,11 +11,11 @@ public class TimerManager : MonoBehaviour
 
     [SerializeField] private float _duration = 60f;
 
-    public Action<float> OnTimeUpdate;
-    public Action OnTimeUp;
+    public event Action<float> OnTimeUpdate;
+    public event Action OnTimeUp;
 
-    [SerializeField] private float _time;
-    [SerializeField] private bool _running;
+    private float _time;
+    private bool _running;
 
     private void Awake()
     {
@@ -23,6 +23,11 @@ public class TimerManager : MonoBehaviour
             Instance = this;
         else
             Destroy(gameObject);
+    }
+
+    private void Start()
+    {
+        GameManager.OnGameReset += StopTimer;
     }
 
     public void StartTimer()
@@ -47,7 +52,11 @@ public class TimerManager : MonoBehaviour
         {
             _running = false;
             OnTimeUp?.Invoke();
-            //Debug.Log("Time's up!");
         }
+    }
+
+    private void OnDisable()
+    {
+        GameManager.OnGameReset -= StopTimer;
     }
 }

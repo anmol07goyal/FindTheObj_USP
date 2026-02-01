@@ -9,10 +9,11 @@ public class TargetListUI : MonoBehaviour
     private void Start()
     {
         ItemManager.Instance.OnItemFound += MarkFound;
+        GameManager.OnGameReset += ResetList;
         BuildList();
     }
 
-    void BuildList()
+    private void BuildList()
     {
         foreach (var data in ItemManager.Instance.ItemPool)
         {
@@ -22,7 +23,7 @@ public class TargetListUI : MonoBehaviour
         }
     }
 
-    void MarkFound(HiddenItemData data)
+    private void MarkFound(HiddenItemData data)
     {
         var icon = _container.Find(data.itemId);
         icon.gameObject.SetActive(false);
@@ -30,8 +31,26 @@ public class TargetListUI : MonoBehaviour
         //    icon.GetComponent<Image>().color = Color.gray;
     }
 
+    public void ResetList()
+    {
+        if (_container.childCount == 0)
+        {
+            BuildList();
+            return;
+        }
+
+        if (_container.childCount == ItemManager.Instance.ItemPool.Count)
+        {
+            foreach (Transform child in _container)
+            {
+                child.gameObject.SetActive(true);
+            }
+        }
+    }
+
     private void OnDisable()
     {
         ItemManager.Instance.OnItemFound -= MarkFound;
+        GameManager.OnGameReset -= ResetList;
     }
 }

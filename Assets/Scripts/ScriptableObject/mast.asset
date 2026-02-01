@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e360fbaca63cc8547a6deb9c77163faa, type: 3}
+  m_Name: mast
+  m_EditorClassIdentifier: Assembly-CSharp::HiddenItemData
+  itemId: Mast
+  icon: {fileID: 4372456607462038632, guid: 8c5afad7fc988114784f8c2f143f6282, type: 3}
+  prefab: {fileID: 7684524426799800852, guid: 28a77afc060cd5844a3d629bae746a23, type: 3}

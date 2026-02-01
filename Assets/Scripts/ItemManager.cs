@@ -18,8 +18,8 @@ public class ItemManager : MonoBehaviour
 
     private Dictionary<string, HiddenItem> _activeItems = new();
 
-    public Action<HiddenItemData> OnItemFound;
-    public Action OnAllItemsFound;
+    public event Action<HiddenItemData> OnItemFound;
+    public event Action OnAllItemsFound;
 
     private int _itemsFound = 0;
 
@@ -29,6 +29,11 @@ public class ItemManager : MonoBehaviour
             Instance = this;
         else
             Destroy(gameObject);
+    }
+
+    private void Start()
+    {
+        GameManager.OnGameReset += ResetItems;
     }
 
     public void SpawnItems(Transform parent)
@@ -48,7 +53,7 @@ public class ItemManager : MonoBehaviour
             {
                 var data = _itemPool[i];
                 var obj = Instantiate(data.prefab, parent);
-                obj.transform.localPosition = Random.insideUnitCircle * 3f;
+                //obj.transform.localPosition = Random.insideUnitCircle * 3f;
 
                 var item = obj.GetComponent<HiddenItem>();
                 item.Data = data;
@@ -56,15 +61,16 @@ public class ItemManager : MonoBehaviour
                 _activeItems.Add(data.itemId, item);
             }
         }
+        /*
         else
         {
             // Reactivate existing items
             foreach (var item in _activeItems.Values)
             {
-                item.transform.localPosition = Random.insideUnitCircle * 3f;
-                item.gameObject.SetActive(true);
+                //item.transform.localPosition = Random.insideUnitCircle * 3f;
+                //item.gameObject.SetActive(true);
             }
-        }
+        }*/
     }
 
     public void TrySelectItem(HiddenItem item)
@@ -88,5 +94,10 @@ public class ItemManager : MonoBehaviour
         //    Destroy(item.gameObject);
 
         //_activeItems.Clear();
+    }
+
+    private void OnDisable()
+    {
+        GameManager.OnGameReset -= ResetItems;
     }
 }

@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e360fbaca63cc8547a6deb9c77163faa, type: 3}
+  m_Name: pearl
+  m_EditorClassIdentifier: Assembly-CSharp::HiddenItemData
+  itemId: Pearl
+  icon: {fileID: 1199120687314136238, guid: 275657a55393475428cfe76d973d259d, type: 3}
+  prefab: {fileID: 8705288243963202846, guid: b76725ee8ca8c5b43bdb97ec69eb020d, type: 3}

@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e360fbaca63cc8547a6deb9c77163faa, type: 3}
+  m_Name: net
+  m_EditorClassIdentifier: Assembly-CSharp::HiddenItemData
+  itemId: Net
+  icon: {fileID: 4851571754476957506, guid: 7ac339fdab064a743872cbbc0f3b9dcb, type: 3}
+  prefab: {fileID: 4719075744032537822, guid: cfc2bd55c058b2e4c8c10c5ff65e2769, type: 3}

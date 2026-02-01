@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using System;
 
 public class GameManager : MonoBehaviour
 {
@@ -7,14 +8,12 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject _resultPanel;
     [SerializeField] private TMP_Text _resultTxt;
 
-    private void OnEnable()
-    {
-        ItemManager.Instance.OnAllItemsFound += Win;
-        TimerManager.Instance.OnTimeUp += Lose;
-    }
+    public static event Action OnGameReset;
 
     private void Start()
     {
+        ItemManager.Instance.OnAllItemsFound += Win;
+        TimerManager.Instance.OnTimeUp += Lose;
         StartGame();
     }
 
@@ -27,8 +26,7 @@ public class GameManager : MonoBehaviour
 
     public void OnClickRestartBtn()
     {
-        TimerManager.Instance.StopTimer();
-        ItemManager.Instance.ResetItems();
+        OnGameReset?.Invoke();
         StartGame();
     }
 

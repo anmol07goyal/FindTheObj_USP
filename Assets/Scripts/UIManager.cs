@@ -14,15 +14,12 @@ public class UIManager : MonoBehaviour
 
     public void UpdateTimerDisplay(float timeValue)
     {
-        _timerTxt.text = FormatTime(timeValue);
-    }
+        TimeSpan ts = TimeSpan.FromSeconds(timeValue);
 
-    public string FormatTime(float timeInSec)
-    {
-        timeInSec = Mathf.Max(0, timeInSec);
+        // Format the TimeSpan into a string (e.g., "00:00:00" for hours:minutes:seconds)
+        string formattedTime = ts.ToString(@"mm\:ss");
 
-        TimeSpan time = TimeSpan.FromSeconds(timeInSec);
-        return time.ToString(@"mm\:ss");
+        _timerTxt.text = formattedTime;
     }
 
     private void OnDisable()

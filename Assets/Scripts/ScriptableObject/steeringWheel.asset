@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e360fbaca63cc8547a6deb9c77163faa, type: 3}
+  m_Name: steeringWheel
+  m_EditorClassIdentifier: Assembly-CSharp::HiddenItemData
+  itemId: Steering Wheel
+  icon: {fileID: -4876276919152016459, guid: 78762f7d44a00784bad2f70805a355e1, type: 3}
+  prefab: {fileID: 4434167629298213954, guid: 79edd87f56f402f49a777c4aa58cded3, type: 3}

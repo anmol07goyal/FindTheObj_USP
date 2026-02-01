@@ -14,6 +14,11 @@ public class HiddenItem : MonoBehaviour, IPointerDownHandler
 
     private bool _found;
 
+    private void Start()
+    {
+        GameManager.OnGameReset += ResetFound;
+    }
+
     public void MarkFound()
     {
         _found = true;
@@ -24,5 +29,16 @@ public class HiddenItem : MonoBehaviour, IPointerDownHandler
     {
         if (_found) return;
         InputHandler.Instance.PointerDown(this, eventData);
+    }
+
+    private void ResetFound()
+    {
+        _found = false;
+        gameObject.SetActive(true);
+    }
+
+    private void OnDestroy()
+    {
+        GameManager.OnGameReset -= ResetFound;
     }
 }
