@@ -12,11 +12,12 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        ItemManager.Instance.OnAllItemsFound += Win;
-        TimerManager.Instance.OnTimeUp += Lose;
-        StartGame();
+        ItemManager.OnAllItemsFound += Win;
+        TimerManager.OnTimeUp += Lose;
+        //StartGame();
     }
 
+    // this is also called from the UI start button
     public void StartGame()
     {
         _resultPanel.SetActive(false);
@@ -51,7 +52,7 @@ public class GameManager : MonoBehaviour
 
     private void OnDisable()
     {
-        ItemManager.Instance.OnAllItemsFound -= Win;
-        TimerManager.Instance.OnTimeUp -= Lose;
+        ItemManager.OnAllItemsFound -= Win;
+        TimerManager.OnTimeUp -= Lose;
     }
 }

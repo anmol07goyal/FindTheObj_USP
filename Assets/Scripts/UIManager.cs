@@ -9,7 +9,7 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
-        TimerManager.Instance.OnTimeUpdate += UpdateTimerDisplay;
+        TimerManager.OnTimeUpdate += UpdateTimerDisplay;
     }
 
     public void UpdateTimerDisplay(float timeValue)
@@ -24,6 +24,6 @@ public class UIManager : MonoBehaviour
 
     private void OnDisable()
     {
-        TimerManager.Instance.OnTimeUpdate -= UpdateTimerDisplay;
+        TimerManager.OnTimeUpdate -= UpdateTimerDisplay;
     }
 }

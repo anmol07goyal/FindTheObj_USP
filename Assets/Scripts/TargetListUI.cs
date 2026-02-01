@@ -6,11 +6,15 @@ public class TargetListUI : MonoBehaviour
     [SerializeField] private Transform _container;
     [SerializeField] private GameObject _iconPrefab;
 
+    private void OnEnable()
+    {
+        ItemManager.OnItemFound += MarkFound;
+        GameManager.OnGameReset += ResetList;
+        ItemManager.OnItemsSpawned += BuildShowList;
+    }
+
     private void Start()
     {
-        ItemManager.Instance.OnItemFound += MarkFound;
-        GameManager.OnGameReset += ResetList;
-        ItemManager.Instance.OnItemsSpawned += BuildShowList;
         BuildList();
     }
 
@@ -20,7 +24,6 @@ public class TargetListUI : MonoBehaviour
         {
             var icon = Instantiate(_iconPrefab, _container);
             icon.GetComponent<TargetListIconHandler>().UpdateInfo(data);
-            //icon.GetComponent<Image>().sprite = data.icon;
             icon.name = data.itemId;
         }
     }
@@ -57,8 +60,8 @@ public class TargetListUI : MonoBehaviour
 
     private void OnDisable()
     {
-        ItemManager.Instance.OnItemFound -= MarkFound;
+        ItemManager.OnItemFound -= MarkFound;
         GameManager.OnGameReset -= ResetList;
-        ItemManager.Instance.OnItemsSpawned -= BuildShowList;
+        ItemManager.OnItemsSpawned -= BuildShowList;
     }
 }

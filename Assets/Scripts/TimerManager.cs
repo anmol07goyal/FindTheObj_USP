@@ -11,8 +11,8 @@ public class TimerManager : MonoBehaviour
 
     [SerializeField] private float _duration = 60f;
 
-    public event Action<float> OnTimeUpdate;
-    public event Action OnTimeUp;
+    public static event Action<float> OnTimeUpdate;
+    public static event Action OnTimeUp;
 
     private float _time;
     private bool _running;

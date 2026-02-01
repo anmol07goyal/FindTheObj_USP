@@ -22,9 +22,9 @@ public class ItemManager : MonoBehaviour
 
     private Dictionary<string, HiddenItem> _hiddenItems = new();
 
-    public event Action<HiddenItemData> OnItemFound;
-    public event Action OnItemsSpawned;
-    public event Action OnAllItemsFound;
+    public static event Action<HiddenItemData> OnItemFound;
+    public static event Action OnItemsSpawned;
+    public static event Action OnAllItemsFound;
 
     private int _itemsFound = 0;
 
