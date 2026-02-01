@@ -13,12 +13,17 @@ public class ItemManager : MonoBehaviour
 
     [Header("Item Pool")]
     [SerializeField] private List<HiddenItemData> _itemPool;
-    //[SerializeField] private int _itemsToFind = 10;
-    public List<HiddenItemData> ItemPool => _itemPool;
+    [SerializeField] private int _maxItemsToFind = 10;
 
-    private Dictionary<string, HiddenItem> _activeItems = new();
+    private List<HiddenItemData> _maxItemPool = new();
+
+    public List<HiddenItemData> ItemPool => _itemPool;
+    public List<HiddenItemData> MaxItemPool => _maxItemPool;
+
+    private Dictionary<string, HiddenItem> _hiddenItems = new();
 
     public event Action<HiddenItemData> OnItemFound;
+    public event Action OnItemsSpawned;
     public event Action OnAllItemsFound;
 
     private int _itemsFound = 0;
@@ -42,40 +47,57 @@ public class ItemManager : MonoBehaviour
         _itemsFound = 0;
 
         // Only respawn if there are fewer active items than needed
-        if (_activeItems.Count == 0 || _activeItems.Count < itemCount)
+        if (_hiddenItems.Count == 0 || _hiddenItems.Count < itemCount)
         {
-            foreach (var item in _activeItems.Values)
+            foreach (var item in _hiddenItems.Values)
                 Destroy(item.gameObject);
 
-            _activeItems.Clear();
+            _hiddenItems.Clear();
 
             for (int i = 0; i < itemCount; i++)
             {
                 var data = _itemPool[i];
                 var obj = Instantiate(data.prefab, parent);
-                //obj.transform.localPosition = Random.insideUnitCircle * 3f;
 
                 var item = obj.GetComponent<HiddenItem>();
                 item.Data = data;
 
-                _activeItems.Add(data.itemId, item);
+                _hiddenItems.Add(data.itemId, item);
             }
         }
-        /*
-        else
+        // else the items are already spawned, do nothing, just reenable them from their respective scripts
+
+        OnlyShowMaxItems();
+    }
+
+    private void OnlyShowMaxItems()
+    {
+        _maxItemPool.Clear();
+        var items = new List<HiddenItem>(_hiddenItems.Values);
+
+        for (int i = 0; i < items.Count; i++)
         {
-            // Reactivate existing items
-            foreach (var item in _activeItems.Values)
-            {
-                //item.transform.localPosition = Random.insideUnitCircle * 3f;
-                //item.gameObject.SetActive(true);
-            }
-        }*/
+            int rand = Random.Range(i, items.Count);
+
+            var temp = items[i];
+            items[i] = items[rand];
+            items[rand] = temp;
+        }
+
+        for (int i = 0; i < items.Count; i++)
+        {
+            var shouldShow = i < _maxItemsToFind;
+            items[i].gameObject.SetActive(shouldShow);
+            if (shouldShow)
+                _maxItemPool.Add(items[i].Data);
+        }
+
+        OnItemsSpawned?.Invoke();
     }
 
     public void TrySelectItem(HiddenItem item)
     {
-        if (!_activeItems.ContainsKey(item.Data.itemId)) 
+        if (!_hiddenItems.ContainsKey(item.Data.itemId)) 
             return;
 
         item.MarkFound();
@@ -84,7 +106,7 @@ public class ItemManager : MonoBehaviour
         OnItemFound?.Invoke(item.Data);
         _itemsFound++;
 
-        if (_itemsFound == _itemPool.Count)
+        if (_itemsFound == _maxItemsToFind)
             OnAllItemsFound?.Invoke();
     }
 

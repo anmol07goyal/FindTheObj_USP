@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 0e28f0102f788994e9a62e2e90492c45
+guid: 25a97cbe19a03c941885722f060de0c6
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1503168805113784978
-    second: icons8-cute-owl-100_0
+      213: 1938329166405313482
+    second: marker_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -75,7 +75,7 @@ TextureImporter:
     maxTextureSize: 512
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -113,23 +113,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: icons8-cute-owl-100_0
+      name: marker_0
       rect:
         serializedVersion: 2
-        x: 13
-        y: 3
-        width: 74
-        height: 88
+        x: 5
+        y: 22
+        width: 118
+        height: 84
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e659eb59feba32be0800000000000000
-      internalID: -1503168805113784978
+      spriteID: ac32e5d6b1456ea10800000000000000
+      internalID: 1938329166405313482
       vertices: []
       indices: 
       edges: []
@@ -139,7 +139,7 @@ TextureImporter:
     physicsShape: []
     bones: []
     spriteID: 5e97eb03825dee720800000000000000
-    internalID: 0
+    internalID: 1537655665
     vertices: []
     indices: 
     edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      icons8-cute-owl-100_0: -1503168805113784978
+      marker_0: 1938329166405313482
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

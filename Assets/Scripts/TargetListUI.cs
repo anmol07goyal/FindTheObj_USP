@@ -10,6 +10,7 @@ public class TargetListUI : MonoBehaviour
     {
         ItemManager.Instance.OnItemFound += MarkFound;
         GameManager.OnGameReset += ResetList;
+        ItemManager.Instance.OnItemsSpawned += BuildShowList;
         BuildList();
     }
 
@@ -23,12 +24,19 @@ public class TargetListUI : MonoBehaviour
         }
     }
 
+    private void BuildShowList()
+    {
+        foreach (Transform child in _container)
+        {
+            var exists = ItemManager.Instance.MaxItemPool.Exists(item => item.itemId == child.name);
+            child.gameObject.SetActive(exists);
+        }
+    }
+
     private void MarkFound(HiddenItemData data)
     {
         var icon = _container.Find(data.itemId);
         icon.gameObject.SetActive(false);
-        //if (icon)
-        //    icon.GetComponent<Image>().color = Color.gray;
     }
 
     public void ResetList()
@@ -41,10 +49,7 @@ public class TargetListUI : MonoBehaviour
 
         if (_container.childCount == ItemManager.Instance.ItemPool.Count)
         {
-            foreach (Transform child in _container)
-            {
-                child.gameObject.SetActive(true);
-            }
+            BuildShowList();
         }
     }
 
@@ -52,5 +57,6 @@ public class TargetListUI : MonoBehaviour
     {
         ItemManager.Instance.OnItemFound -= MarkFound;
         GameManager.OnGameReset -= ResetList;
+        ItemManager.Instance.OnItemsSpawned -= BuildShowList;
     }
 }

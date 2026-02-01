@@ -5,6 +5,7 @@ using UnityEngine.EventSystems;
 public class HiddenItem : MonoBehaviour, IPointerDownHandler
 {
     [SerializeField] private HiddenItemData _data;
+    [SerializeField] private GameObject _highlightGO;
 
     public HiddenItemData Data
     {
@@ -16,13 +17,15 @@ public class HiddenItem : MonoBehaviour, IPointerDownHandler
 
     private void Start()
     {
-        GameManager.OnGameReset += ResetFound;
+        GameManager.OnGameReset += ResetItem;
+        _highlightGO.SetActive(false);
     }
 
     public void MarkFound()
     {
         _found = true;
-        gameObject.SetActive(false);
+        //gameObject.SetActive(false);
+        _highlightGO.SetActive(true);
     }
 
     public void OnPointerDown(PointerEventData eventData)
@@ -31,14 +34,15 @@ public class HiddenItem : MonoBehaviour, IPointerDownHandler
         InputHandler.Instance.PointerDown(this, eventData);
     }
 
-    private void ResetFound()
+    private void ResetItem()
     {
         _found = false;
         gameObject.SetActive(true);
+        _highlightGO.SetActive(false);
     }
 
     private void OnDestroy()
     {
-        GameManager.OnGameReset -= ResetFound;
+        GameManager.OnGameReset -= ResetItem;
     }
 }
