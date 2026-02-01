@@ -19,7 +19,8 @@ public class TargetListUI : MonoBehaviour
         foreach (var data in ItemManager.Instance.ItemPool)
         {
             var icon = Instantiate(_iconPrefab, _container);
-            icon.GetComponent<Image>().sprite = data.icon;
+            icon.GetComponent<TargetListIconHandler>().UpdateInfo(data);
+            //icon.GetComponent<Image>().sprite = data.icon;
             icon.name = data.itemId;
         }
     }
@@ -36,7 +37,8 @@ public class TargetListUI : MonoBehaviour
     private void MarkFound(HiddenItemData data)
     {
         var icon = _container.Find(data.itemId);
-        icon.gameObject.SetActive(false);
+        icon.GetComponent<TargetListIconHandler>().MarkFound();
+        //icon.gameObject.SetActive(false);
     }
 
     public void ResetList()

@@ -21,6 +21,11 @@ public class GameManager : MonoBehaviour
     {
         _resultPanel.SetActive(false);
         ItemManager.Instance.SpawnItems(_itemParent);
+    }
+
+    // this is also called from the UI start button
+    public void StartTimer()
+    {
         TimerManager.Instance.StartTimer();
     }
 
@@ -28,6 +33,7 @@ public class GameManager : MonoBehaviour
     {
         OnGameReset?.Invoke();
         StartGame();
+        StartTimer();
     }
 
     private void Win()

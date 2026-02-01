@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 9d45a91bc7672094f98d9e1e54b56f53
+guid: 0e213fa8e34d5234ca59e38928ebca02
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6624281710713573796
-    second: magnifyingGlass_0
+      213: 6734969502869765742
+    second: square_border_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -52,7 +52,7 @@ TextureImporter:
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
-  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteBorder: {x: 64, y: 62, z: 64, w: 33}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
@@ -113,23 +113,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: magnifyingGlass_0
+      name: square_border_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 97
-        height: 118
+        width: 128
+        height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 4a113337e1d2eeb50800000000000000
-      internalID: 6624281710713573796
+      spriteID: e6e34a7541b677d50800000000000000
+      internalID: 6734969502869765742
       vertices: []
       indices: 
       edges: []
@@ -139,7 +139,7 @@ TextureImporter:
     physicsShape: []
     bones: []
     spriteID: 5e97eb03825dee720800000000000000
-    internalID: 0
+    internalID: 1537655665
     vertices: []
     indices: 
     edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      magnifyingGlass_0: 6624281710713573796
+      square_border_0: 6734969502869765742
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
